@@ -2,19 +2,30 @@ import java.util.Random;
 
 class Admin {
 
-void addCustomer(){
-  Admin atest;
-  Customer custom1= new Customer();
-  atest.addCustomer(custom1);
-}
 
-void generatePrizes(final int custID1,final int custID2,final int custID3) {
+
+int generatePrizes(final int custID1,final int custID2,final int custID3) {
     Random generateIds= new Random();
-
-    for (int luckyIds=0;luckyIds<)
-
+    int custIdKeeper[]={custId1,custId2,custID3};
+    int luckyIdKeeper[]=new int[6];
+    int custWonPrizes[];
+    //To generate random ID numbers from existing IDs.
+    for (int luckyIds=0;luckyIds<luckyIdKeeper.length();luckyIds++) {
+        //need to write a code that checks if the random number is generated out of existing ID numbers.
+        luckyIdKeeper[luckyIds]=generateIds.nextInt(10);
+    }
+    for(int luckyIdCount=0;luckyIdCount<luckyIdKeeper.length();luckyIdCount++) {
+        for(int custIdCount=0;custIdCount<custIdKeeper.length(); custIdCount++) {
+            if(luckyIdKeeper[luckyIdCount]=custIdKeeper[custIdCount])
+                custWonPrizes[luckyIdCount]=luckyIdKeeper[luckyIdCount];
+        }
+    }
+    return custWonPrizes;
 }
-
+public static void main(String[] args) {
+    Customer ctest=new Customer();
+    ctest.addCustomer();
+}
 
 }
 

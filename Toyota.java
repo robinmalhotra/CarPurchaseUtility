@@ -1,6 +1,12 @@
+import java.util.Scanner;
+
 class Toyota extends Car {
   private float mResale;
 
+  Toyota (){
+      setCar(0,0,(float)0.0,"");
+      mResale=(float)0.0;
+  }
   Toyota(final int CAR_ID, final int YEAR, final float PRICE, final String MODEL) {
       setCar(CAR_ID, YEAR, PRICE, MODEL);
       mResale=computeResale(PRICE);
@@ -10,15 +16,35 @@ class Toyota extends Car {
     mResale=(float)((80.0/100.0)*takeprice);
     return mResale;
   }
-  void showToyota() {
+  void showCar() {
     System.out.println("In Toyota Class now: ");
      getCar();
-     System.out.println("Resale value = " + mResale);
+     System.out.println("Resale value = Rs " + mResale);
    }
-/*  public static void main(String[] args) {
-    Toyota ttest= new Toyota(103,2019,20000, "Etios");
-    ttest.showToyota();*/
-  }
+
+     Car addCar() {
+     Scanner scanme= new Scanner(System.in);
+
+     System.out.println("Enter the Car ID: ");
+     int mCarIdForAdd=scanme.nextInt();
+     System.out.println("Enter the Car Year: ");
+     int mCarYearForAdd=scanme.nextInt();
+     System.out.println("Enter the Car Price: Rs ");
+     float mCarPriceForAdd=scanme.nextFloat();
+     System.out.println("Enter the Car Model: ");
+     String mCarModelForAdd=scanme.next();
+
+     Toyota addT= new Toyota(mCarIdForAdd,mCarYearForAdd,mCarPriceForAdd,mCarModelForAdd);
+
+     return addT;
+   }
+
+
+ /*public static void main(String[] args) {
+    Car ctest;
+    ctest=addToyota();
+    ctest.showToyota();
+  }*/
 }
 
 /*

@@ -3,45 +3,108 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Customer {
-    private int mCustomerId;
-    private String mCustomerName;
-    private ArrayList<Car> mCustomerCarList= new ArrayList<>();
+    private static int mCustomerId;
+    private static String mCustomerFirstName;
+    private static String mCustomerLastName;
+    private static ArrayList<Car> mCustomerCarList;
 
-    void createCarList() {
-      System.out.println("b");
+    Customer(int mCustId, String mCustFirstName, String mCustLastName, ArrayList<Car> carsOfCustomer) {
+      mCustomerId=mCustId;
+      mCustomerFirstName=mCustFirstName;
+      mCustomerLastName=mCustLastName;
+      mCustomerCarList=carsOfCustomer;
     }
-      void addCustomer(Customer cust) {
+      ArrayList<Car> createCarList(int carCount) {
+
+        ArrayList<Car> holdList=new ArrayList<>();
+
+        if (carCount==0) {
+            System.out.println("No Cars being added!");
+            return holdList;
+        }//if ends
+        int count=0;
+          //ArrayList<Car> holdList=new ArrayList<>();
+          Scanner getCarsforList=new Scanner(System.in);
+          do {
+          System.out.println("Add Cars for this Customer: ");
+          System.out.println("List of Cars available");
+          System.out.println("'1' for Hyundai");
+          //Hyundai newHyundai;
+          System.out.println("'2' for Maruti");
+          //Maruti newMaruti;
+          System.out.println("'3' for Toyota");
+          //Toyota newToyota;
+          Car newCar;
+          int carChoice=getCarsforList.nextInt();
+          switch(carChoice) {
+              case 1: Hyundai hyundaiCar= new Hyundai();
+                      newCar=hyundaiCar.addCar();
+                      //hyundaiCar=addCar;
+                      holdList.add(newCar);
+              break;
+              case 2: Maruti marutiCar=new Maruti();
+                      newCar=marutiCar.addCar();
+                      holdList.add(newCar);
+              break;
+              case 3: Toyota toyotaCar=new Toyota();
+                      newCar=toyotaCar.addCar();
+                      holdList.add(newCar);
+              break;
+              default:
+                System.out.println("This option is not available");
+          }// switch ends
+          count++;
+        }while(count<carCount);
+        /*  System.out.println("Do you want to add more cars? Y/N");
+          String addCarDecision=getCarsforList.next();
+
+          if (addCarDecision=="Y" ||addCarDecision=="y") {
+            System.out.println("How many cars do you want to add?: ");
+            int newcarCount=getCarsforList.nextInt();
+            createCarList(carCount);
+        }//if ends*/
+          return holdList;
+      }//function ends
+
+      Customer addCustomer() {
 
       Scanner sc = new Scanner(System.in);
 
-      System.out.println("Enter the name of Customer: ");
-      cust.mCustomerName=sc.nextLine();
       System.out.println("Enter the ID of Customer: ");
-      cust.mCustomerId=sc.nextInt();
-      System.out.println("Add Cars for this Customer: ");
-      System.out.println("List of Cars available");
-      System.out.println("'1' for Hyundai");
-      System.out.println("'2' for Maruti");
-      System.out.println("'3' for Toyota");
-      int carChoice=sc.nextInt();
-      switch(carChoice)
-      {
-        case 1: cust.mCustomerCarList.add(cust.addHyundai);
-        break;
+      int mCustId=sc.nextInt();
+      System.out.println("Enter the First name of Customer: ");
+      String mCustFirstName=sc.next();
+      System.out.println("Enter the Last name of Customer: ");
+      String mCustLastName=sc.next();
+      System.out.println("How many cars do you want to add?: ");
+      int carCount=sc.nextInt();
+      //createCarList(carCount);
+      ArrayList<Car> carsOfCustomer=createCarList(carCount);
+      Customer customerCreated=new Customer(mCustId,mCustFirstName,mCustLastName,carsOfCustomer);
+        System.out.println("Customer Created");
+      return customerCreated;
 
-        case 2: cust.mCustomerCarList.add(cust.addMaruti);
-        break;
-
-        case 3: cust.mCustomerCarList.add(cust.addToyota);
-        break;
-
-        default:
-          System.out.println("Choice not available");
       }
-      System.out.println("Do you want to add more cars? Y/N");
-      String addCarDecision=sc.nextLine();
-      if (addCarDecision=="Y" ||addCarDecision=='y') 
 
+
+
+  void showCustomer() {
+  System.out.println("In Customer Class now");
+  System.out.println("Id of Customer" + mCustomerId);
+  System.out.println("First Name of Customer"+ mCustomerFirstName);
+  System.out.println("First Last of Customer"+mCustomerLastName);
+  System.out.println("Cars of this customer are: ");
+  for(int i=0;i<mCustomerCarList.size();i++) {
+    (mCustomerCarList.get(i)).showCar();
+  }
+}
+
+
+/*public static void main(String[] args) {
+    Customer ctest1;
+    ctest=addCustomer();
+    ctest.showCustomer();
+}*/
 }
 
 
