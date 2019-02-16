@@ -5,12 +5,8 @@ abstract class Car {
     private String mModel;
 
     abstract float computeResale(final float takeprice);
-    //abstract Car addHyundai();
-    //abstract Car addMaruti();
-    //abstract Car addToyota();
     abstract void showCar();
     abstract Car addCar();
-
 
     public void setCar(final int CAR_ID, final int YEAR, final float PRICE, final String MODEL) {
         mCarId=CAR_ID;

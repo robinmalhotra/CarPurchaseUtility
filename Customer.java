@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Customer {
-    private static int mCustomerId;
-    private static String mCustomerFirstName;
-    private static String mCustomerLastName;
-    private static ArrayList<Car> mCustomerCarList;
+    private int mCustomerId;
+    private String mCustomerFirstName;
+    private String mCustomerLastName;
+    public ArrayList<Car> mCustomerCarList;
 
     Customer(int mCustId, String mCustFirstName, String mCustLastName, ArrayList<Car> carsOfCustomer) {
       mCustomerId=mCustId;
@@ -14,9 +14,16 @@ class Customer {
       mCustomerLastName=mCustLastName;
       mCustomerCarList=carsOfCustomer;
     }
-      ArrayList<Car> createCarList(int carCount) {
+      void showCarList(final ArrayList<Car> GET_CAR_LIST) {
+          ArrayList<Car> holdCarList=GET_CAR_LIST;
+          for(Car hisCars: holdCarList) {
+              hisCars.showCar();
+          }
 
-        ArrayList<Car> holdList=new ArrayList<>();
+      }
+      ArrayList<Car> manipulateCarList(final ArrayList<Car> hisCarlist, final int carCount) {
+
+        ArrayList<Car> holdList=hisCarlist;
 
         if (carCount==0) {
             System.out.println("No Cars being added!");
@@ -66,38 +73,64 @@ class Customer {
           return holdList;
       }//function ends
 
-      Customer addCustomer() {
-
-      Scanner sc = new Scanner(System.in);
-
-      System.out.println("Enter the ID of Customer: ");
-      int mCustId=sc.nextInt();
-      System.out.println("Enter the First name of Customer: ");
-      String mCustFirstName=sc.next();
-      System.out.println("Enter the Last name of Customer: ");
-      String mCustLastName=sc.next();
-      System.out.println("How many cars do you want to add?: ");
-      int carCount=sc.nextInt();
-      //createCarList(carCount);
-      ArrayList<Car> carsOfCustomer=createCarList(carCount);
-      Customer customerCreated=new Customer(mCustId,mCustFirstName,mCustLastName,carsOfCustomer);
-        System.out.println("Customer Created");
-      return customerCreated;
-
+      String giveFirstNameOfCustomer (Customer thisCustomer) {
+          return thisCustomer.mCustomerFirstName;
       }
 
+      String giveLastNameOfCustomer (Customer thisCustomer) {
+          return thisCustomer.mCustomerLastName;
+      }
+      int giveCustomerId (Customer thisCustomer) {
+          return thisCustomer.mCustomerId;
+      }
+
+      ArrayList<Car> giveCarsForCustomer(Customer thisCustomer) {
+          ArrayList<Car> returnCarList=new ArrayList<>();
+          Customer holdCustomer=thisCustomer;
+          returnCarList=holdCustomer.mCustomerCarList;
+          return returnCarList;
+      }
+      Customer () {
+          mCustomerId=0;
+          mCustomerFirstName="";
+          mCustomerLastName="";
+          ArrayList<Car> emptyCarList= new ArrayList<>();
+          mCustomerCarList=emptyCarList;
+      }
+      Customer giveCustomerforCustomerId(final ArrayList<Customer> thisCustomerList, final int thisCustomerId) {
+          ArrayList<Customer> holdCustomerList=thisCustomerList;
+
+          int returnId;
+          for(int i=0;i<holdCustomerList.size();i++) {
+              if(thisCustomerId==giveCustomerId(holdCustomerList.get(i))) {
+                return holdCustomerList.get(i);
+          }
+        }
+        return new Customer();
+      }
+      //Function to add Customer. @return Customer.
+      Customer addCustomer() {
+          Scanner sc = new Scanner(System.in);
+          ArrayList<Car> carsOfCustomer=new ArrayList<>();
+          System.out.println("Enter the ID of Customer(Must be a Unique ID between 1 to 10): ");
+          int mCustId=sc.nextInt();
+          System.out.println("Enter the First name of Customer: ");
+          String mCustFirstName=sc.next();
+          System.out.println("Enter the Last name of Customer: ");
+          String mCustLastName=sc.next();
+          System.out.println("How many cars do you want to add?: ");
+          int carCount=sc.nextInt();
+          //createCarList(carCount);
+          carsOfCustomer=manipulateCarList(carsOfCustomer,carCount);
+          Customer customerCreated=new Customer(mCustId,mCustFirstName,mCustLastName,carsOfCustomer);
+          //  System.out.println("Customer Created");
+          return customerCreated;
+
+      }
+    }
 
 
-  void showCustomer() {
-  System.out.println("In Customer Class now");
-  System.out.println("Id of Customer" + mCustomerId);
-  System.out.println("First Name of Customer"+ mCustomerFirstName);
-  System.out.println("First Last of Customer"+mCustomerLastName);
-  System.out.println("Cars of this customer are: ");
-  for(int i=0;i<mCustomerCarList.size();i++) {
-    (mCustomerCarList.get(i)).showCar();
-  }
-}
+
 
 
 /*public static void main(String[] args) {
@@ -105,7 +138,7 @@ class Customer {
     ctest=addCustomer();
     ctest.showCustomer();
 }*/
-}
+
 
 
 /* * This application is controlled by the admin who will manage customers along with their purchased cars.

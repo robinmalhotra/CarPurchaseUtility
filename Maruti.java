@@ -4,7 +4,7 @@ class Maruti extends Car {
   private float mResale;
 
   Maruti() {
-    
+
         setCar(0,0,(float)0.0,"");
         mResale=(float)0.0;
     }
@@ -19,7 +19,7 @@ class Maruti extends Car {
       return mResale;
   }
   void showCar() {
-    System.out.println("In Maruti Class now: ");
+    System.out.println("It's a Maruti Car. ");
      getCar();
      System.out.println("Resale value = " + mResale);
   }

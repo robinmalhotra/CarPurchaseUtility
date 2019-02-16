@@ -19,11 +19,11 @@ class Hyundai extends Car {
     }
     //Shows the the Hyundai Car details.
     void showCar() {
-       System.out.println("In Hyundai Class now: ");
+       System.out.println("It's a Hyundai Car. ");
         getCar();
         System.out.println("Resale value = Rs" + mResale);
      }
-
+      // Method to create a Car Object.
        Car addCar() {
        Scanner scanme= new Scanner(System.in);
 
