@@ -56,9 +56,9 @@ class Admin extends Customer {
             if(thisCustomerId==giveCustomerId(thisCustomerList.get(i))) {
 
                 System.out.println("Customer ID: "+giveCustomerId(thisCustomerList.get(i)));
-                System.out.println("First Name of Customer: "+
+                System.out.println("  First Name of Customer: "+
                         giveFirstNameOfCustomer(thisCustomerList.get(i))+
-                                "Last Name of Customer: "+giveLastNameOfCustomer(thisCustomerList.get(i)));
+                                "  Last Name of Customer: "+giveLastNameOfCustomer(thisCustomerList.get(i)));
 
                 }//if ends
 
@@ -80,7 +80,7 @@ class Admin extends Customer {
             //print Customer's IDs and their Names.
             System.out.println("Customer ID: "+
                     giveCustomerId(holdCustomerList.get(i))+
-                            "Name of Customer: " +
+                            "  Name of Customer: " +
                                     giveFirstNameOfCustomer(holdCustomerList.get(i))+
                                             " "+giveLastNameOfCustomer(holdCustomerList.get(i)));
         }//for loop ends.
