@@ -1,19 +1,21 @@
 import java.util.Scanner;
 
 class Hyundai extends Car {
-
+    //Since the resale of every Car is unique for its own, it has mResale variable private  to itself.
     private float mResale;
+    //Constructs the Hyundai Car with no values.
     Hyundai() {
         setCar(0,0,(float)0.0,"");
         mResale=(float)0.0;
     }
-    //Constructor that creates a object of type Hyundai
+    //Constructor that creates a object of type Hyundai with specified values.
     Hyundai(final int CAR_ID, final int YEAR, final float PRICE, final String MODEL) {
         setCar(CAR_ID, YEAR, PRICE, MODEL);
         mResale=computeResale(PRICE);
     }
-    //To compute Resale value of Hyundai cars
-    float computeResale(final float takeprice) {
+    //Overridden method to compute Resale value of Hyundai cars.
+    float computeResale(final float TAKES_PRICE) {
+        float takeprice=TAKES_PRICE;
         mResale=(float)((40.0/100.0)*takeprice);
         return mResale;
     }
@@ -41,10 +43,6 @@ class Hyundai extends Car {
 
        return addH;
      }
-
-/*public static void main(String[] args) {
-  Car ctest;
-}*/
 }
 
 /*

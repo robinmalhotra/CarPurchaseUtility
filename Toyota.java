@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
 class Toyota extends Car {
+  //Since the resale of every Car is unique for its own, it has mResale variable private  to itself.
   private float mResale;
 
+  //Constructs the Toyota Car with no values.
   Toyota (){
       setCar(0,0,(float)0.0,"");
       mResale=(float)0.0;
   }
+
+  //Constructor that creates a object of type Toyota with specified values.
   Toyota(final int CAR_ID, final int YEAR, final float PRICE, final String MODEL) {
       setCar(CAR_ID, YEAR, PRICE, MODEL);
       mResale=computeResale(PRICE);
@@ -39,12 +43,6 @@ class Toyota extends Car {
      return addT;
    }
 
-
- /*public static void main(String[] args) {
-    Car ctest;
-    ctest=addToyota();
-    ctest.showToyota();
-  }*/
 }
 
 /*
